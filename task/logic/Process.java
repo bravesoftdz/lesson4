@@ -34,12 +34,9 @@ public class Process {
 
 	public void printRegions(City[] cities) {
 		double sumSquare = 0;
-		// double sumPopulation = 0; out population of country
 		for (City city : cities) {
 			if (city.returnRegionSquare() != 0) {
 				sumSquare = sumSquare + city.returnRegionSquare();
-				// sumPopulation = sumPopulation + city.getPopulation(); //create sum of
-				// population
 				System.out.println(city.returnRegionName() + " область: площадь: " + city.returnRegionSquare() + " км²,"
 						+ " плотнность населения: " + city.getPopulation() + " чел./км²");
 
@@ -49,10 +46,12 @@ public class Process {
 	}
 
 	public void printRegionalCenters(City[] cities) {
+		int countRegion = 0;
 		System.out.println("\nРегиональные центры:");
 		for (City city : cities) {
 			if (city.isRegioanlCenter() == true) {
-				System.out.println(city.getCityName());
+				countRegion++;
+				System.out.println(countRegion + ". " + city.getCityName());
 				String[][] newArr = DistrictDB.getArrRegion();
 				if (this.printInformation == true) {
 					System.out.printf("        %15s %20s %20s \t \n", "Наименование района", "Площадь (км²)",
@@ -77,7 +76,6 @@ public class Process {
 	}
 
 	public static String getCountry() {
-		country = "Республика Беларусь.";
 		return country;
 	}
 
@@ -89,12 +87,18 @@ public class Process {
 
 		City[] cities = new City[6];
 
-		cities[0] = new City("Минск", new Region("Минская", 1902.66, 208787), new District("Минский"), true, true, 208787);
-		cities[1] = new City("Гродно", new Region("Гродненская", 2594.05, 49987), new District("Гродненский"), false, true, 49987);
-		cities[2] = new City("Брест", new Region("Брестская", 1544.11, 42037), new District("Брестский"), false, true, 42037);
-		cities[3] = new City("Гомель", new Region("Гомельская", 1951.42, 68210), new District("Гомельский"), false,	true, 68210);
-		cities[4] = new City("Витебск", new Region("Витебская", 2705.12, 37206), new District("Витебский"), false, true, 37206);
-		cities[5] = new City("Могилёв", new Region("Могилёвская", 1895.40, 40130), new District("Могилёвский"), false, true, 40130);
+		cities[0] = new City("Минск", new Region("Минская", 1902.66, 208787), new District("Минский"), true, true,
+				208787);
+		cities[1] = new City("Гродно", new Region("Гродненская", 2594.05, 49987), new District("Гродненский"), false,
+				true, 49987);
+		cities[2] = new City("Брест", new Region("Брестская", 1544.11, 42037), new District("Брестский"), false, true,
+				42037);
+		cities[3] = new City("Гомель", new Region("Гомельская", 1951.42, 68210), new District("Гомельский"), false,
+				true, 68210);
+		cities[4] = new City("Витебск", new Region("Витебская", 2705.12, 37206), new District("Витебский"), false, true,
+				37206);
+		cities[5] = new City("Могилёв", new Region("Могилёвская", 1895.40, 40130), new District("Могилёвский"), false,
+				true, 40130);
 
 		Process state = new Process();
 
